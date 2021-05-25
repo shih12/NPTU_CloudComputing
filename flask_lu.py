@@ -1,0 +1,25 @@
+import json
+import publisher
+from flask import request
+from flask import Flask
+app = Flask(__name__)
+
+@app.route('/get_helloworld', methods=['GET'])
+def get_hello_world():
+	return 'hello world'
+
+@app.route('/post_helloworld', methods=['POST'])
+def post_hello_world():
+	jsonobj = request.get_json(silent=True)
+	token = json.dumps(jsonobj['token']).replace("\"", "")
+	publisher.publisher(token)
+	return token
+
+
+@app.route('/')
+def hello_world():
+	return 'Hello, World!'
+
+
+if __name__ == '__main__':
+	app.run(host='0.0.0.0', port=5000, debug=True)

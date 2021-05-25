@@ -1,11 +1,11 @@
 # Start
 
 ```
-docker-compose up -d
+#docker-compose up -d
 ```
 
 # Stop
 
 ```
-docker-compose down
+#docker-compose down
 ```

@@ -19,6 +19,7 @@ warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 # create user restful API
 @app.route('/list_user', methods=['GET'])
+@app.route('/', methods=['GET'])
 @swag_from('apidocs/api_list_user.yml')
 def create_user():
 
@@ -38,4 +39,4 @@ def index():
 
 
 if __name__ =='__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5001)

@@ -1,4 +1,4 @@
-version: "3.9"
+version: "3.3"
 services:
 
   nginx:
@@ -24,7 +24,8 @@ services:
       - "5000:5000" 
     networks:
       internal_routes:
-
+        aliases:
+          - create_user
   list_user:
     container_name: api_luser
     build: list_user/

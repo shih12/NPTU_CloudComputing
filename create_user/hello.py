@@ -19,6 +19,7 @@ warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 # create user restful API
 @app.route('/create_user', methods=['POST'])
+@app.route('/',methods=['POST'])
 @swag_from('apidocs/api_create_user.yml')
 def create_user():
 

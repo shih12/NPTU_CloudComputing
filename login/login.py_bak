@@ -1,0 +1,73 @@
+from flask import Flask, render_template, request, jsonify, make_response, json, send_from_directory, redirect, url_for
+import pika
+import logging
+import warnings
+from pymongo import MongoClient
+import requests
+from bs4 import BeautifulSoup
+import json
+import pandas as pd
+import json
+
+# packages for swagger
+from flasgger import Swagger
+from flasgger import swag_from
+
+app = Flask(__name__)
+
+swagger = Swagger(app)
+
+
+logging.basicConfig(format='%(asctime)s %(message)s', level=logging.INFO)
+warnings.filterwarnings("ignore", category=DeprecationWarning) 
+
+
+@app.route('/login', methods=['POST'])
+@app.route('/',methods=['POST'])
+@swag_from('apidocs/api_create_user.yml')
+def login():
+
+    # retrive post body
+    jsonobj = request.get_json(silent=True)
+    username = json.dumps(jsonobj['username']).replace("\"", "")
+    password = json.dumps(jsonobj['password']).replace("\"", "")
+
+
+    client = MongoClient(host='rs2', port = 27042)
+    db = client.test
+    collection = db.account
+    username = str(username)
+    password = str(password)
+
+    list =[]
+    for s in collection.find({"name": username, "password": password}):
+        list.append({"name": s['name'], "password": s['password']})
+        
+    if len(list) > 0:
+        r = requests.get('https://www.dcard.tw/service/api/v2/posts?popular=true&limit=10')
+        data = r.json()
+        df = pd.DataFrame(data)
+        url_o = 'https://www.dcard.tw/f/relationship/p/'
+        url = []
+        # title = []
+
+        for i in range(10):
+            uul = str(url_o + str(df['id'][i]))
+            title = str(df['title'][i])
+            url.append({"url": uul,"title":title})
+
+        s = json.dumps(url,ensure_ascii=False)
+
+        return jsonify(s)
+    else:
+        return "account error"
+    
+
+
+@app.route('/')
+
+def index():
+    return 'Web App With Python Flask!'
+
+
+app.run(host='0.0.0.0',port=5005)

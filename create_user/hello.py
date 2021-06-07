@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, jsonify, make_response, json,
 import pika
 import logging
 import warnings
+import hashlib
 
 # packages for swagger
 from flasgger import Swagger
@@ -23,11 +24,14 @@ warnings.filterwarnings("ignore", category=DeprecationWarning)
 @swag_from('apidocs/api_create_user.yml')
 def create_user():
 
+
     # retrive post body
     jsonobj = request.get_json(silent=True)
     username = json.dumps(jsonobj['username']).replace("\"", "")
     password = json.dumps(jsonobj['password']).replace("\"", "")
 
+    password = hashlib.sha1(password.encode('utf-8')).hexdigest()
+    
     logging.info('username:', username)
     logging.info('password:', password)
 

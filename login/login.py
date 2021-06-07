@@ -49,7 +49,7 @@ def login():
         list.append({"name": s['name'], "password": s['password']})
         
     if len(list) > 0:
-        url = "https://www.ptt.cc/bbs/Gossiping/index.html";
+        url = "https://www.ptt.cc/bbs/Gossiping/index.html"
         data = []
         for i in range(3):
 

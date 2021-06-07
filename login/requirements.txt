@@ -4,3 +4,4 @@ flasgger
 pymongo
 bs4
 requests
+pandas

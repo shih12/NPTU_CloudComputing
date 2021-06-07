@@ -16,7 +16,7 @@ services:
     networks: 
       internal_routes:
         aliases: 
-          - "login"
+          - login
 
   rabbitmq_create_user:
     image: rabbitmq 

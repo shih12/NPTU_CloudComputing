@@ -1,2 +1,6 @@
 pika
 flask
+flasgger
+pymongo
+bs4
+requests

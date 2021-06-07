@@ -59,7 +59,8 @@ def create_user():
     res['success'] = True
     res['message'] = 'Create user successed, your username=' + username
     res = make_response(jsonify(res), 200)
-    return res
+
+    return message
 
 
 

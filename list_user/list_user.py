@@ -1,7 +1,11 @@
 from flask import Flask, render_template, request, jsonify, make_response, json, send_from_directory, redirect, url_for
+from werkzeug.utils import format_string
 import pika
 import logging
 import warnings
+from pymongo import MongoClient
+import json
+from flask_pymongo import PyMongo
 
 # packages for swagger
 from flasgger import Swagger
@@ -23,14 +27,18 @@ warnings.filterwarnings("ignore", category=DeprecationWarning)
 @swag_from('apidocs/api_list_user.yml')
 def create_user():
 
+    client = MongoClient(host='rs3', port=27043)
+    db = client.test
+    collection = db.account
 
-    # reture requests
-    res = dict()
-    res['username_1'] = 'Alice'
-    res['username_2'] = 'Bob'
-    res['username_3'] = 'Cindy'
-    res = make_response(jsonify(res), 200)
-    return res
+    data = []
+
+    for s in collection.find():
+        data.append({'name': s['name'], 'password': s['password']})
+    
+    return jsonify(data)
+    
+
 
 
 @app.route('/')

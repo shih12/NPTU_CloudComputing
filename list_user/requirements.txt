@@ -1,3 +1,6 @@
 flask
 pika
 flasgger
+pymongo
+flask_pymongo
+

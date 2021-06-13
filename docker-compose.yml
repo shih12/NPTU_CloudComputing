@@ -11,8 +11,6 @@ services:
   
   login:
     build: login/
-    ports: 
-      - "5005:5005"
     networks: 
       internal_routes:
         aliases: 
@@ -29,8 +27,6 @@ services:
   
   create_user:
     build: create_user/
-    ports:
-      - "5000:5000" 
     networks:
       internal_routes:
         aliases:

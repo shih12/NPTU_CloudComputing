@@ -26,10 +26,10 @@ def callback(ch, method, properties, body):
     data = json.loads(message)
     
     ch.basic_ack(delivery_tag=method.delivery_tag)
-    username = data['username']
+    name = data['name']
     password = data['password']
 
-    sql_connection.connt(username,password)
+    sql_connection.connt(name,password)
 
 channel.basic_qos(prefetch_count=1)
 channel.basic_consume(queue='task_queue', on_message_callback=callback)

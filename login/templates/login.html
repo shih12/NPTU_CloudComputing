@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+</head>
+<style type="text/css">
+    @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap");
+
+    * {
+        margin: 0;
+        padding: 0; 
+        list-style: none;
+    }
+    html,body{
+        height: 100%;
+
+    }  
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .login{
+        width: 600px;
+        height: 400px;
+        background-color: #aaa;
+        border-radius: 10px;
+        border: 5px solid #000;
+        box-shadow: 0 0 60px #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .form{
+        font-family: 'Roboto Condensed', sans-serif;
+    }
+    .form h1{
+        margin-bottom: 20px; 
+        padding-bottom: 10px; 
+        border-bottom: 1px solid rgb(255, 255, 255) ;
+    }
+    .form .group{
+        margin-bottom: 20px;
+    }
+    .form label{
+        line-height: 2 ;
+    }
+    .form input{
+        width: 100%;
+        border: 1px solid #fff;
+        line-height: 3 ;
+        border-radius: 5px;
+    }
+    .form .btn{
+        font-family: 'Noto Sans TC', sans-serif;
+        font-size: 14px;
+        background-color: rgb(195, 204, 204);
+    }
+    .form .btn:hover{
+        background-color: rgb(61, 60, 60);
+    }
+</style>
+<body>
+    <div class="login">
+        <form method="POST" class="form">
+            <h1>Login</h1>
+            <div class="group">
+                <label for="user_name">Username</label>
+                <input type="text" name="name" id="user_name">
+            </div>
+            <div class="group">
+                <label for="user_password">Password</label>
+                <input type="password" name="password" id="user_password">
+            </div>
+            <div class="btn-group">
+                <input class="btn" type="submit" value="submit">
+            </div>
+        </form>
+    </div>
+    
+</body>
+</html>

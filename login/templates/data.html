@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" content="application/json">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+</head>
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap");
+  a {
+      font-family: 'Roboto Condensed', sans-serif;
+  }
+</style>
+<body>
+<ul>
+  {% for i in range(time) %}
+    <li><a href="{{ data[i]["url"] }}" target="_blank">{{ data[i]["title"] }}</a></li>
+  {% endfor %}
+</ul> 
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List User</title>
+</head>
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap");
+    p {
+        font-family: 'Roboto Condensed', sans-serif;
+    }
+</style>
+<body>
+    <ol>
+    {% for i in range(time) %}    
+        <li><p>Username : {{ data[i]["name"] }}  , Password : {{ data[i]["password"] }} .</p></li>
+    {% endfor %}
+    </ol>
+</body>
+</html>

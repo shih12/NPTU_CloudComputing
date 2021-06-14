@@ -41,3 +41,14 @@ cfg =  {
 ```
 rs.initiate(cfg);
 ```
+```
+rs.status().members.forEach(m => print(`${m.name} => ${m.stateStr}`))
+```
+
+# Server info
+
+```
+create user : 127.0.0.1/create_user/useradd
+list user : 127.0.0.1/list_user/list_user
+Login : 127.0.0.1/login/login
+```

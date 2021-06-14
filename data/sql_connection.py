@@ -1,7 +1,7 @@
 from pymongo import MongoClient
 
 def connt(name,password):
-    client = MongoClient(host='rs3', port=27043)
+    client = MongoClient(host='rs1', port=27041)
 
     db = client.test
 

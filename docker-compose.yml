@@ -46,8 +46,6 @@ services:
     depends_on:
       - "rabbitmq_create_user"
     restart: on-failure
-    links: 
-      - "mongodb_replicate_set_3"    
     networks:
       internal_routes:
 

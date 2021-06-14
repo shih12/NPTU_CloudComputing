@@ -11,13 +11,13 @@ logging.basicConfig(format='%(asctime)s %(message)s', level=logging.INFO)
 warnings.filterwarnings("ignore", category=DeprecationWarning) 
 
 # connection configurations
-connection = pika.BlockingConnection(pika.ConnectionParameters(host='rabbitmq', port=5672))
+connection = pika.BlockingConnection(
+                pika.ConnectionParameters(host='rabbitmq', port=5672))
 channel = connection.channel()
 channel.queue_declare(queue='task_queue', durable=True)
 
 
 def callback(ch, method, properties, body):
-
 
     message = body.decode("utf-8") 
     logging.info(message)

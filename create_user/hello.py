@@ -18,15 +18,15 @@ swagger = Swagger(app)
 # setup logger
 logging.basicConfig(format='%(asctime)s %(message)s', level=logging.INFO)
 warnings.filterwarnings("ignore", category=DeprecationWarning) 
-@app.route('/add', methods=['GET'])
+@app.route('/adduser', methods=['GET'])
 def create_user_page():
     return render_template("creat_user.html")
 
 # create user restful API
-@app.route('/add', methods=['POST'])
+@app.route('/adduser', methods=['POST'])
 @swag_from('apidocs/api_create_user.yml')
 def create_user():
-    client = MongoClient(host='rs3', port = 27043)
+    client = MongoClient(host='rs1', port = 27041)
     db = client.test
     collection = db.account
     name = request.form['name']
@@ -78,9 +78,9 @@ def create_user():
 
 
 
-# @app.route('/')
-# def index():
-#     return 'Web App with Python Flask!'
+@app.route('/')
+def index():
+    return 'Web App with Python Flask!'
 
 
 if __name__ =='__main__':

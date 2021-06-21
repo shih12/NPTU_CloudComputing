@@ -34,8 +34,6 @@ services:
   list_user:
     container_name: api_luser
     build: list_user/
-    # links: 
-    #   - "mongodb_slave"
     networks:
       internal_routes:
         aliases:

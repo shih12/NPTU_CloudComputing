@@ -47,8 +47,7 @@ rs.status().members.forEach(m => print(`${m.name} => ${m.stateStr}`))
 
 # Server info
 
-```
-create user : <http://127.0.0.1/create_user/adduser>
-list user : <http://127.0.0.1/list_user/list_user>
-Login : <http://127.0.0.1/login/login>
-```
+
+*create user : <http://127.0.0.1/create_user/adduser>
+*list user : <http://127.0.0.1/list_user/list_user>
+*Login : <http://127.0.0.1/login/login>

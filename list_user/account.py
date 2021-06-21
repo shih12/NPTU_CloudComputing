@@ -1,7 +1,7 @@
 from pymongo import MongoClient
 
 def list_account():
-    client = MongoClient(host='rs2', port=27042)
+    client = MongoClient(host='rs1', port=27041)
 
     db = client.test
 
